@@ -1,0 +1,10 @@
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\bin\Debug\RS232_echo.exe.config
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\bin\Debug\RS232_echo.exe
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\bin\Debug\RS232_echo.pdb
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.csprojAssemblyReference.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.Form1.resources
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.exe
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo\obj\Debug\RS232_echo.pdb

@@ -1,0 +1,11 @@
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\bin\Debug\RS232_echo_new.exe.config
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\bin\Debug\RS232_echo_new.exe
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\bin\Debug\RS232_echo_new.pdb
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.csprojAssemblyReference.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.Form1.resources
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.exe
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.pdb
+C:\Users\Dohyun\source\repos\RS232_echo\RS232_echo_new\obj\Debug\RS232_echo_new.PortSelect.resources

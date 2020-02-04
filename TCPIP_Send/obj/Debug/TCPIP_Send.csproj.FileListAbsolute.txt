@@ -1,0 +1,10 @@
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\bin\Debug\TCPIP_Send.exe.config
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\bin\Debug\TCPIP_Send.exe
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\bin\Debug\TCPIP_Send.pdb
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.csprojAssemblyReference.cache
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.Form1.resources
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.exe
+C:\Users\Dohyun\source\repos\RS232_echo\TCPIP_Send\obj\Debug\TCPIP_Send.pdb
