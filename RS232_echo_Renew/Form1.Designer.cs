@@ -53,10 +53,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ChatOffButton = new System.Windows.Forms.Button();
             this.ChatButton = new System.Windows.Forms.Button();
             this.ChatBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ChatOffButton = new System.Windows.Forms.Button();
+            this.SendCmdButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.SendCmdButton);
             this.tabPage3.Controls.Add(this.ChatOffButton);
             this.tabPage3.Controls.Add(this.ChatButton);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -297,9 +299,19 @@
             this.tabPage3.Text = "UDP";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // ChatOffButton
+            // 
+            this.ChatOffButton.Location = new System.Drawing.Point(18, 36);
+            this.ChatOffButton.Name = "ChatOffButton";
+            this.ChatOffButton.Size = new System.Drawing.Size(110, 23);
+            this.ChatOffButton.TabIndex = 12;
+            this.ChatOffButton.Text = "Chat_Off";
+            this.ChatOffButton.UseVisualStyleBackColor = true;
+            this.ChatOffButton.Click += new System.EventHandler(this.ChatOffButton_Click);
+            // 
             // ChatButton
             // 
-            this.ChatButton.Location = new System.Drawing.Point(18, 22);
+            this.ChatButton.Location = new System.Drawing.Point(18, 7);
             this.ChatButton.Name = "ChatButton";
             this.ChatButton.Size = new System.Drawing.Size(110, 23);
             this.ChatButton.TabIndex = 11;
@@ -322,21 +334,21 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(14, 314);
+            this.label4.Location = new System.Drawing.Point(15, 314);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 14;
             this.label4.Text = "Chat";
             // 
-            // ChatOffButton
+            // SendCmdButton
             // 
-            this.ChatOffButton.Location = new System.Drawing.Point(18, 51);
-            this.ChatOffButton.Name = "ChatOffButton";
-            this.ChatOffButton.Size = new System.Drawing.Size(110, 23);
-            this.ChatOffButton.TabIndex = 12;
-            this.ChatOffButton.Text = "Chat_Off";
-            this.ChatOffButton.UseVisualStyleBackColor = true;
-            this.ChatOffButton.Click += new System.EventHandler(this.ChatOffButton_Click);
+            this.SendCmdButton.Location = new System.Drawing.Point(18, 65);
+            this.SendCmdButton.Name = "SendCmdButton";
+            this.SendCmdButton.Size = new System.Drawing.Size(110, 23);
+            this.SendCmdButton.TabIndex = 13;
+            this.SendCmdButton.Text = "SendCmd";
+            this.SendCmdButton.UseVisualStyleBackColor = true;
+            this.SendCmdButton.Click += new System.EventHandler(this.SendCmdButton_Click);
             // 
             // Form1
             // 
@@ -401,6 +413,7 @@
         private System.Windows.Forms.TextBox ChatBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button ChatOffButton;
+        private System.Windows.Forms.Button SendCmdButton;
     }
 }
 

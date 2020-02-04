@@ -34,11 +34,15 @@ namespace RS232_echo_Renew
 
         Thread udp_thread; //UDP 쓰레드 
 
+        Thread tcp_thread; //TCP 쓰레드
 
         public Form1()
         {
             InitializeComponent();
-            ps = new PortSelect();            
+            ps = new PortSelect();
+
+            tcp_thread = new Thread(TCPIP_Server);
+            udp_thread = new Thread(UDP_Server);
         }
        
         //Send 버튼 
@@ -196,12 +200,7 @@ namespace RS232_echo_Renew
             }
             
         }
-
-        private void font1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         //폰트 크기 늘리기 
         private void FontSizeUp_Click(object sender, EventArgs e)
         {
@@ -220,59 +219,48 @@ namespace RS232_echo_Renew
                 SendMsgBox.Font.Style, SendMsgBox.Font.Unit);
         }
 
-        //쓰레드함수-TCPIP서버
+        //쓰레드함수-TCPIP서버 시작
         private void TCPIP_Server()
         {
             TcpListener listner = new TcpListener(IPAddress.Parse("127.0.0.1"), 9000);
 
             //서버 시작 
             listner.Start();
+            
+            StateMsg("Server Start.....");
+            TcpClient clientSocket = listner.AcceptTcpClient(); //세션 구성, 클라와 연결
+            StateMsg("Success!");
 
-            //StateBox.Text = "Server Start....\r\n";
-            StateMsg("Server Statr.....");
-
-            //this.Update();
-
+            //스트림 생성 
+            NetworkStream ns = clientSocket.GetStream();
+            StreamReader sr = new StreamReader(ns);
+            StreamWriter sw = new StreamWriter(ns);
+                        
             while (true)
             {
-                TcpClient clientSocket = listner.AcceptTcpClient(); //세션 구성, 클라와 연결
-                StateMsg("Success!");
-                //this.Update(); //텍스트박스를 업데이트 
-
-                //스트림 생성 
-                NetworkStream ns = clientSocket.GetStream();
-                StreamReader sr = new StreamReader(ns);
-                StreamWriter sw = new StreamWriter(ns);
-
-                //클라이언트에서 문자열 수신 
-                string rs = sr.ReadLine();
-
-                //RecvMsgBox.Text += rs + "\r\n"; //받은 문자열 출력 
-                RecvMsg(rs);
-
-                //받은 문자열을 클라이언트에 재전송(에코)
-                sw.WriteLine(rs);
-                sw.Flush();
-
-                //this.Update();
-
-                //스트림 닫기 
-                sw.Close();
-                sr.Close();
-                ns.Close();
-
-                if (rs == "q")
+                try
                 {
-                    listner.Stop();
-                    return;
+                    //클라이언트에서 문자열 수신 
+                    string rs = sr.ReadLine();
+
+                    RecvMsg(rs);
+
+                    //받은 문자열을 클라이언트에 재전송(에코)
+                    sw.WriteLine(rs);
+                    sw.Flush();
                 }
+                catch(Exception exp)
+                {
+                    Error error = new Error(string.Format("{0}", exp));
+                }
+               
+                
             }
         }
         
         //TCPIP 서버 시작 
         private void ServerButton_Click(object sender, EventArgs e)
         {
-            Thread tcp_thread = new Thread(TCPIP_Server);
             tcp_thread.Start();
         }
 
@@ -414,30 +402,9 @@ namespace RS232_echo_Renew
             
             StateMsg("Chat Start....."); //delegate함수로 변경 
 
-            //쓰레드 생성 
-            udp_thread = new Thread(UDP_Server);
+            //쓰레드 시작             
             udp_thread.Start();            
             
-        }
-        
-        //엔터로 채팅 전송(UDP)
-        private void ChatBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(udp_thread.IsAlive && e.KeyCode == Keys.Enter)
-            {
-                //소켓 생성 
-                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-                //메시지를 전송할 타겟 EndPoint
-                EndPoint epUDP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9001);
-
-                //채팅 박스의 마지막 줄
-                int endline = ChatBox.Lines.Length - 1;                
-
-                //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
-                sock.SendTo(Encoding.Default.GetBytes(ChatBox.Lines[endline]), epUDP);
-                
-            }
         }
 
         //채팅 종료 버튼 
@@ -449,6 +416,42 @@ namespace RS232_echo_Renew
 
             StateMsg("Chat Off....");
             ChatBox.Text = null;
+        }
+
+        //엔터로 채팅 전송(UDP)
+        private void ChatBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(udp_thread.IsAlive && e.KeyCode == Keys.Enter)
+            {
+                //소켓 생성 
+                Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+                //메시지를 전송할 타겟 EndPoint
+                EndPoint epUDP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9001);
+
+                //채팅 박스의 마지막 줄
+                int endline = ChatBox.Lines.Length - 1;
+
+                //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
+                sock_local.SendTo(Encoding.Default.GetBytes(ChatBox.Lines[endline]), epUDP);
+                
+            }
+        }
+        
+
+        //UDP방식으로 TCPIP연결을 요청하게 하는 CMD 전송 
+        private void SendCmdButton_Click(object sender, EventArgs e)
+        {
+            if(!tcp_thread.IsAlive)
+                tcp_thread.Start();
+            //소켓 생성 
+            Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            //메시지를 전송할 타겟 EndPoint
+            EndPoint epUDP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9001);           
+
+            //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
+            sock_local.SendTo(Encoding.Default.GetBytes("testcmd"), epUDP);
         }
     }
 }
