@@ -1,0 +1,10 @@
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\bin\Debug\Emul_New.exe.config
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\bin\Debug\Emul_New.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\bin\Debug\Emul_New.pdb
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_Server_New.csprojAssemblyReference.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_New.Form1.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_New.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_Server_New.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_Server_New.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_New.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\Emul_New\obj\Debug\Emul_New.pdb

@@ -1,0 +1,12 @@
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\bin\Debug\RS232_echo_Renew.exe.config
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\bin\Debug\RS232_echo_Renew.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\bin\Debug\RS232_echo_Renew.pdb
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.Editini.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.Error.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.Form1.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.PortSelect.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\Emul_Server.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\Emul_Server.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.pdb
