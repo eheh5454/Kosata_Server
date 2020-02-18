@@ -10,3 +10,4 @@ C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\Emul_Server
 C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\Emul_Server.csproj.CoreCompileInputs.cache
 C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.exe
 C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\RS232_echo_Renew.pdb
+C:\Users\Dohyun\source\repos\Kosta_Server\RS232_echo_Renew\obj\Debug\Emul_Server.csprojAssemblyReference.cache

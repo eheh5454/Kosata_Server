@@ -1,0 +1,10 @@
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\bin\Debug\TCPIP_Send.exe.config
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\bin\Debug\TCPIP_Send.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\bin\Debug\TCPIP_Send.pdb
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\Remote_Send.csprojAssemblyReference.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.Form1.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.Properties.Resources.resources
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\Remote_Send.csproj.GenerateResource.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\Remote_Send.csproj.CoreCompileInputs.cache
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.exe
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.pdb

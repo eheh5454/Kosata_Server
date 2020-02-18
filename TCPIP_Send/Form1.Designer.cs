@@ -36,6 +36,10 @@
             this.ConnectButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.ErrorBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Box_Temp = new System.Windows.Forms.TextBox();
+            this.Box_Hum = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // UP
@@ -46,7 +50,7 @@
             this.UP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UP.ForeColor = System.Drawing.Color.LightPink;
             this.UP.Image = ((System.Drawing.Image)(resources.GetObject("UP.Image")));
-            this.UP.Location = new System.Drawing.Point(118, 2);
+            this.UP.Location = new System.Drawing.Point(129, 106);
             this.UP.Name = "UP";
             this.UP.Size = new System.Drawing.Size(110, 110);
             this.UP.TabIndex = 0;
@@ -60,7 +64,7 @@
             this.RIGHT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.RIGHT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RIGHT.Image = ((System.Drawing.Image)(resources.GetObject("RIGHT.Image")));
-            this.RIGHT.Location = new System.Drawing.Point(234, 109);
+            this.RIGHT.Location = new System.Drawing.Point(245, 213);
             this.RIGHT.Name = "RIGHT";
             this.RIGHT.Size = new System.Drawing.Size(110, 110);
             this.RIGHT.TabIndex = 1;
@@ -74,7 +78,7 @@
             this.DOWN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.DOWN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DOWN.Image = ((System.Drawing.Image)(resources.GetObject("DOWN.Image")));
-            this.DOWN.Location = new System.Drawing.Point(118, 216);
+            this.DOWN.Location = new System.Drawing.Point(129, 320);
             this.DOWN.Name = "DOWN";
             this.DOWN.Size = new System.Drawing.Size(110, 110);
             this.DOWN.TabIndex = 2;
@@ -88,7 +92,7 @@
             this.LEFT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.LEFT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LEFT.Image = ((System.Drawing.Image)(resources.GetObject("LEFT.Image")));
-            this.LEFT.Location = new System.Drawing.Point(2, 109);
+            this.LEFT.Location = new System.Drawing.Point(13, 213);
             this.LEFT.Name = "LEFT";
             this.LEFT.Size = new System.Drawing.Size(110, 110);
             this.LEFT.TabIndex = 3;
@@ -97,7 +101,7 @@
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(338, 250);
+            this.ConnectButton.Location = new System.Drawing.Point(269, 15);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(86, 33);
             this.ConnectButton.TabIndex = 4;
@@ -108,7 +112,7 @@
             // button2
             // 
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(338, 289);
+            this.button2.Location = new System.Drawing.Point(269, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 33);
             this.button2.TabIndex = 5;
@@ -118,11 +122,45 @@
             // 
             // ErrorBox
             // 
-            this.ErrorBox.Location = new System.Drawing.Point(2, 336);
+            this.ErrorBox.Location = new System.Drawing.Point(15, 434);
             this.ErrorBox.Multiline = true;
             this.ErrorBox.Name = "ErrorBox";
-            this.ErrorBox.Size = new System.Drawing.Size(422, 44);
+            this.ErrorBox.Size = new System.Drawing.Size(340, 44);
             this.ErrorBox.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "온도";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(13, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "습도";
+            // 
+            // Box_Temp
+            // 
+            this.Box_Temp.Location = new System.Drawing.Point(15, 27);
+            this.Box_Temp.Name = "Box_Temp";
+            this.Box_Temp.Size = new System.Drawing.Size(100, 21);
+            this.Box_Temp.TabIndex = 9;
+            // 
+            // Box_Hum
+            // 
+            this.Box_Hum.Location = new System.Drawing.Point(15, 76);
+            this.Box_Hum.Name = "Box_Hum";
+            this.Box_Hum.Size = new System.Drawing.Size(100, 21);
+            this.Box_Hum.TabIndex = 10;
             // 
             // Form1
             // 
@@ -130,7 +168,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(436, 392);
+            this.ClientSize = new System.Drawing.Size(379, 480);
+            this.Controls.Add(this.Box_Hum);
+            this.Controls.Add(this.Box_Temp);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.ConnectButton);
@@ -141,6 +183,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +198,10 @@
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox ErrorBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox Box_Temp;
+        private System.Windows.Forms.TextBox Box_Hum;
     }
 }
 
