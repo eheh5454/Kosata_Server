@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.UP = new System.Windows.Forms.Button();
             this.RIGHT = new System.Windows.Forms.Button();
             this.DOWN = new System.Windows.Forms.Button();
@@ -40,6 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Box_Temp = new System.Windows.Forms.TextBox();
             this.Box_Hum = new System.Windows.Forms.TextBox();
+            this.Web_mjpg_stream = new System.Windows.Forms.WebBrowser();
+            this.Chart_TH = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).BeginInit();
             this.SuspendLayout();
             // 
             // UP
@@ -50,7 +58,7 @@
             this.UP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UP.ForeColor = System.Drawing.Color.LightPink;
             this.UP.Image = ((System.Drawing.Image)(resources.GetObject("UP.Image")));
-            this.UP.Location = new System.Drawing.Point(129, 106);
+            this.UP.Location = new System.Drawing.Point(552, 206);
             this.UP.Name = "UP";
             this.UP.Size = new System.Drawing.Size(110, 110);
             this.UP.TabIndex = 0;
@@ -64,7 +72,7 @@
             this.RIGHT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.RIGHT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RIGHT.Image = ((System.Drawing.Image)(resources.GetObject("RIGHT.Image")));
-            this.RIGHT.Location = new System.Drawing.Point(245, 213);
+            this.RIGHT.Location = new System.Drawing.Point(668, 313);
             this.RIGHT.Name = "RIGHT";
             this.RIGHT.Size = new System.Drawing.Size(110, 110);
             this.RIGHT.TabIndex = 1;
@@ -78,7 +86,7 @@
             this.DOWN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.DOWN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DOWN.Image = ((System.Drawing.Image)(resources.GetObject("DOWN.Image")));
-            this.DOWN.Location = new System.Drawing.Point(129, 320);
+            this.DOWN.Location = new System.Drawing.Point(552, 420);
             this.DOWN.Name = "DOWN";
             this.DOWN.Size = new System.Drawing.Size(110, 110);
             this.DOWN.TabIndex = 2;
@@ -92,7 +100,7 @@
             this.LEFT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.LEFT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LEFT.Image = ((System.Drawing.Image)(resources.GetObject("LEFT.Image")));
-            this.LEFT.Location = new System.Drawing.Point(13, 213);
+            this.LEFT.Location = new System.Drawing.Point(436, 313);
             this.LEFT.Name = "LEFT";
             this.LEFT.Size = new System.Drawing.Size(110, 110);
             this.LEFT.TabIndex = 3;
@@ -101,7 +109,7 @@
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(269, 15);
+            this.ConnectButton.Location = new System.Drawing.Point(538, 571);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(86, 33);
             this.ConnectButton.TabIndex = 4;
@@ -112,7 +120,7 @@
             // button2
             // 
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(269, 54);
+            this.button2.Location = new System.Drawing.Point(654, 571);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 33);
             this.button2.TabIndex = 5;
@@ -122,7 +130,7 @@
             // 
             // ErrorBox
             // 
-            this.ErrorBox.Location = new System.Drawing.Point(15, 434);
+            this.ErrorBox.Location = new System.Drawing.Point(2, 571);
             this.ErrorBox.Multiline = true;
             this.ErrorBox.Name = "ErrorBox";
             this.ErrorBox.Size = new System.Drawing.Size(340, 44);
@@ -132,7 +140,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Location = new System.Drawing.Point(0, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 7;
@@ -142,7 +150,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(13, 61);
+            this.label2.Location = new System.Drawing.Point(0, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 8;
@@ -150,17 +158,50 @@
             // 
             // Box_Temp
             // 
-            this.Box_Temp.Location = new System.Drawing.Point(15, 27);
+            this.Box_Temp.Location = new System.Drawing.Point(2, 24);
             this.Box_Temp.Name = "Box_Temp";
             this.Box_Temp.Size = new System.Drawing.Size(100, 21);
             this.Box_Temp.TabIndex = 9;
             // 
             // Box_Hum
             // 
-            this.Box_Hum.Location = new System.Drawing.Point(15, 76);
+            this.Box_Hum.Location = new System.Drawing.Point(2, 124);
             this.Box_Hum.Name = "Box_Hum";
             this.Box_Hum.Size = new System.Drawing.Size(100, 21);
             this.Box_Hum.TabIndex = 10;
+            // 
+            // Web_mjpg_stream
+            // 
+            this.Web_mjpg_stream.Location = new System.Drawing.Point(2, 218);
+            this.Web_mjpg_stream.MinimumSize = new System.Drawing.Size(20, 20);
+            this.Web_mjpg_stream.Name = "Web_mjpg_stream";
+            this.Web_mjpg_stream.ScrollBarsEnabled = false;
+            this.Web_mjpg_stream.Size = new System.Drawing.Size(425, 330);
+            this.Web_mjpg_stream.TabIndex = 11;
+            // 
+            // Chart_TH
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Chart_TH.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart_TH.Legends.Add(legend1);
+            this.Chart_TH.Location = new System.Drawing.Point(149, 9);
+            this.Chart_TH.Name = "Chart_TH";
+            series1.ChartArea = "ChartArea1";
+            series1.LabelBorderWidth = 2;
+            series1.Legend = "Legend1";
+            series1.Name = "Temp";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Humidity";
+            this.Chart_TH.Series.Add(series1);
+            this.Chart_TH.Series.Add(series2);
+            this.Chart_TH.Size = new System.Drawing.Size(591, 191);
+            this.Chart_TH.TabIndex = 12;
+            this.Chart_TH.Text = "chart1";
+            title1.Name = "Temp";
+            title1.Text = "Temp and Humidity";
+            this.Chart_TH.Titles.Add(title1);
             // 
             // Form1
             // 
@@ -168,7 +209,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(379, 480);
+            this.ClientSize = new System.Drawing.Size(781, 623);
+            this.Controls.Add(this.Chart_TH);
+            this.Controls.Add(this.Web_mjpg_stream);
             this.Controls.Add(this.Box_Hum);
             this.Controls.Add(this.Box_Temp);
             this.Controls.Add(this.label2);
@@ -184,6 +227,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,6 +246,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Box_Temp;
         private System.Windows.Forms.TextBox Box_Hum;
+        private System.Windows.Forms.WebBrowser Web_mjpg_stream;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart_TH;
     }
 }
 

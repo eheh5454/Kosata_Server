@@ -235,6 +235,8 @@ namespace RS232_echo_Renew
             NetworkStream ns = clientSocket.GetStream();
             StreamReader sr = new StreamReader(ns);
             StreamWriter sw = new StreamWriter(ns);
+
+            //byte[] buff = new byte[1024];
                         
             while (true)
             {
@@ -248,6 +250,11 @@ namespace RS232_echo_Renew
                     //받은 문자열을 클라이언트에 재전송(에코)
                     sw.WriteLine(rs);
                     sw.Flush();
+
+                    //ns.Read(buff, 0, buff.Length);
+                    //string s = Encoding.Default.GetString(buff);
+                    //RecvMsg(s);
+
                 }
                 catch(Exception exp)
                 {
