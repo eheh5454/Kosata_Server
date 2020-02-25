@@ -15,6 +15,8 @@ using System.Threading;
 using System.Data.SqlClient;
 
 
+
+
 namespace TCPIP_Send
 {
  
@@ -39,24 +41,51 @@ namespace TCPIP_Send
         //디비컨트롤 선언 
         DatabaseControl mydb = new DatabaseControl();
 
-        int chart_x = 1;        
+        int chart_x = 1;
+
+        string MyPORT = "9000";
+        string MyIP = null;
 
         public Form1()
         {
             InitializeComponent();
 
             //온,습도를 표시할 텍스트박스를 배열로 만듬
-            boxes = new TextBox[] { Box_Temp, Box_Hum };            
+            boxes = new TextBox[] { Box_Temp, Box_Hum };
 
             //udp서버 바로 시작 
             udp_thread = new Thread(UDP_Server);
             udp_thread.Start();
 
             //db 행 개수 측정 
-            count_id = mydb.GetId();            
+            count_id = mydb.GetId();
 
             //웹스트리밍 시작 
             Web_mjpg_stream.Navigate("http://192.168.0.119:8091/javascript_simple.html");
+
+
+            //로컬 아이피 얻기 
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            string localIP;
+            foreach (IPAddress ip in host.AddressList)
+            {
+
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                    MyIP = localIP;
+                }
+
+            }
+
+            List<StopWatch> stopwatch_list = new List<StopWatch>();
+            StopWatch sw1 = new StopWatch(0);
+            stopwatch_list.Add(sw1);
+
+            stopwatch_list[0].Reset();
+
+            ErrorBox.Text = stopwatch_list[0].current_action_check.ToString();
+
             
         }
 
@@ -154,10 +183,16 @@ namespace TCPIP_Send
                 ErrorBox.Text = string.Format("{0}", se);
             }
 #else
-            
-            
+            //소켓 생성 
+            Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            
+            //메시지를 전송할 타겟 EndPoint
+            EndPoint epUDP = new IPEndPoint(IPAddress.Parse("192.168.0.119"), 9001);
+
+            //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
+            sock_local.SendTo(Encoding.Default.GetBytes("con192.168.0.109"+MyPORT), epUDP);
+
+
             return;
 
 #endif
@@ -314,5 +349,21 @@ namespace TCPIP_Send
         }
 
 
+    }
+
+
+    public struct StopWatch
+    {
+        public int current_action_check;
+
+        public StopWatch(int curr_action_check)
+        {            
+            current_action_check = curr_action_check;
+        }
+
+        public void Reset()
+        {          
+            current_action_check = 1;
+        }       
     }
 }
