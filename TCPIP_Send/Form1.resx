@@ -350,4 +350,16 @@
         ela9AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="STOP.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAABGdBTUEAALGPC/xhBQAAAYZJREFUeF7t
+        3DFOwzAYQGEfqwNDj8atGBh6pA4MGRiKf8cZHJzUD4mhybP6SYiEVn5q3DDUaWS850e4pfTxSOk7exxA
+        zOO+zK1O9W/jmtJbjvO5eoFDy/O95XnnBxj1HdR9wjOIaDXF/ogTe09wNk+DGaq1GSz/9lTr06joUhPN
+        Ixbz3omaNYu+76p9zeXYO0GtuPrKDWfvoFrlxtVYY0qs/MN9fUBdU8Q6yv96/87FHTAWYCzAWICxAGMB
+        xgKMBRgLMBZgLMBYgLEAYwHGAowFGAswFmAswFiAsQBjAcYCjAUYCzAWYCzAWICxAGMBxgKMBRgLMBZg
+        LMBYgLEAYwHGAowFGAswFmAswFiAsQBjAcYCjAUYC4hYfpN1kHs6jPvy2/eD3KoAKLGuKV16B9Wqm6uU
+        jVbcCmpHsxdN7OLTO0mzZpejGH4q9kWXmqgdXo6t5vLrDYPNnoZaxtmD5fn3L72tEYva2aLFfH8t5mTk
+        v7zEDVm9eZ3WL/DipmVuMc865Y2R0g/iBaINgrvMdQAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

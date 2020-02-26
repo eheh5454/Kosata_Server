@@ -43,8 +43,19 @@ namespace TCPIP_Send
 
         int chart_x = 1;
 
+        //내 IP PORT 주소 
         string MyPORT = "9000";
         string MyIP = null;
+
+        //라지그 IP와 PORT주소 
+        string Razig_IP = "192.168.0.119";
+        string Razig_PORT = "9001";
+
+        //날짜와 시간, DB에 넣을 용도 
+        string date = null;
+        string time = null;
+
+        string stream_address = "http://192.168.0.119:8091/javascript_simple.html";
 
         public Form1()
         {
@@ -60,10 +71,13 @@ namespace TCPIP_Send
             //db 행 개수 측정 
             count_id = mydb.GetId();
 
-            //웹스트리밍 시작 
-            Web_mjpg_stream.Navigate("http://192.168.0.119:8091/javascript_simple.html");
+            //DB가져와서 차트 세팅 
+            SetChart();
 
-
+            //라지그 IP,PORT 초기값 적용 
+            BOX_razigIP.Text = Razig_IP;
+            BOX_razigPORT.Text = Razig_PORT;            
+            
             //로컬 아이피 얻기 
             IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
             string localIP;
@@ -77,16 +91,6 @@ namespace TCPIP_Send
                 }
 
             }
-
-            List<StopWatch> stopwatch_list = new List<StopWatch>();
-            StopWatch sw1 = new StopWatch(0);
-            stopwatch_list.Add(sw1);
-
-            stopwatch_list[0].Reset();
-
-            ErrorBox.Text = stopwatch_list[0].current_action_check.ToString();
-
-            
         }
 
         //델리게이트 함수로 쓰레드에서 메시지박스를 업데이트 
@@ -105,7 +109,7 @@ namespace TCPIP_Send
             }
         }
 
-        //델리게이트 함수로 쓰레드에서 메시지박스를 업데이트 
+        //델리게이트 함수로 쓰레드에서 차트를 업데이트 
         delegate void UpdateChartCallback(string temp, string hum);
         private void UpdateChart(string temp, string hum)
         {
@@ -117,10 +121,60 @@ namespace TCPIP_Send
             //아래 내용을 실행한다.
             else
             {
+                string chart_x = date + "\r\n" + time;
                 Chart_TH.Series["Temp"].Points.AddXY(chart_x, temp);
-                Chart_TH.Series["Humidity"].Points.AddXY(chart_x, hum);
-                chart_x++;
+                Chart_TH.Series["Humidity"].Points.AddXY(chart_x, hum); 
+                if(Chart_TH.Series["Temp"].Points.Count > 5)
+                {                    
+                    Chart_TH.Series["Temp"].Points.RemoveAt(0);
+                    Chart_TH.Series["Humidity"].Points.RemoveAt(0);
+                }
             }
+        }
+
+        //차트 초기세팅 
+        private void SetChart()
+        {
+            if (count_id == 0)
+                return;
+
+            //for문 시작점과 끝점 
+            int start, last;
+
+            //db카운트 수에 따라서 start와 last 다르게 정의 
+            if (count_id < 5)
+            {
+                start = 0;
+                last = count_id-1;
+            }                
+            else
+            {
+                start = count_id - 5;
+                last = count_id - 1;
+            }
+
+            //db에서 정보를 가져와 차트 세팅 
+            for (; start <= last; start++) 
+            {
+                string date = mydb._GetStringDB(start.ToString(), "Date", "Razig_Date");
+                string time = mydb._GetStringDB(start.ToString(), "Time", "Razig_Date");
+                string temp = mydb._GetStringDB(start.ToString(), "Temp", "Razig_Date");
+                string hum = mydb._GetStringDB(start.ToString(), "Hum", "Razig_Date");
+
+                string chart_x = date + "\r\n" + time;
+
+                Chart_TH.Series["Temp"].Points.AddXY(chart_x, temp);
+                Chart_TH.Series["Humidity"].Points.AddXY(chart_x, hum);              
+            }
+            
+        }
+
+        //현재 날짜, 시간 정보 갱신 
+        private void UpdateDate()
+        {
+            date = DateTime.Now.Year.ToString()+ "-" + DateTime.Now.Month.ToString() + "-"
+                + DateTime.Now.Day.ToString();
+            time = DateTime.Now.TimeOfDay.ToString().Substring(0,8);
         }
 
         //쓰레드 함수 - UDP서버 열기 
@@ -147,18 +201,17 @@ namespace TCPIP_Send
                 //수신한 길이가 0 이상이면 data를 받는다 
                 if (recv > 0)
                 {
-                    string dataFromClient = Encoding.Default.GetString(buff, 0, recv);
-                    
+                    string dataFromClient = Encoding.Default.GetString(buff, 0, recv);                    
 
                     if(dataFromClient.Substring(0,2) == "TS")
                     {
                         string temp_s = dataFromClient.Substring(2,5);
                         string hum_s = dataFromClient.Substring(7, 6);
-                        mydb._ExcuteSql(string.Format("INSERT INTO Razig (id, Temp, Humidity) VALUES ({0},{1},{2})", count_id++, temp_s, hum_s));
+                        UpdateDate();
+                        mydb._ExcuteSql(string.Format("INSERT INTO Razig_Date (id, Date, Time, Temp, Hum) VALUES ({0},'{1}','{2}',{3},{4})", count_id++, date, time, temp_s, hum_s));
                         UpdateBox(temp_s, Box.Temp);
                         UpdateBox(hum_s, Box.Hum);
-                        UpdateChart(temp_s, hum_s);
-                       
+                        UpdateChart(temp_s, hum_s);                      
                         
                     }                    
                     
@@ -183,18 +236,21 @@ namespace TCPIP_Send
                 ErrorBox.Text = string.Format("{0}", se);
             }
 #else
+            //웹 스트리밍 시작                 
+            Web_mjpg_stream.Navigate(stream_address);
+
+            //입력한 라지그 IP, PORT정보를 가져옴 
+            Razig_IP = BOX_razigIP.Text;
+            Razig_PORT = BOX_razigPORT.Text;
+
             //소켓 생성 
             Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            //메시지를 전송할 타겟 EndPoint
-            EndPoint epUDP = new IPEndPoint(IPAddress.Parse("192.168.0.119"), 9001);
-
-            //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
-            sock_local.SendTo(Encoding.Default.GetBytes("con192.168.0.109"+MyPORT), epUDP);
-
-
-            return;
-
+            //설정한 라지그의 IP,PORT를 EndPoint로 설정 
+            EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT));
+            
+            //라지그에 내 IP와 PORT정보 전송 
+            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + MyPORT), epUDP);            
 #endif
         }
 
@@ -260,7 +316,8 @@ namespace TCPIP_Send
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            udp_thread.Abort();
+            //udp_thread.Abort();
+            //Application.ExitThread();
         }
     }
 
@@ -303,7 +360,7 @@ namespace TCPIP_Send
         //db내용 삭제 
         public void DeleteDB()
         {
-            DbCmd.CommandText = "delete from Razig";
+            DbCmd.CommandText = "delete from Razig_Date";
             DbCmd.ExecuteNonQuery();
         }
 
@@ -328,7 +385,7 @@ namespace TCPIP_Send
             string s3;
 
             //쿼리문으로 데이터를 읽어옴 
-            DbCmd.CommandText = string.Format("select {1} from {2} where Id={0}", s1, s2, sdb);
+            DbCmd.CommandText = string.Format("select {1} from {2} where id={0}", s1, s2, sdb);
             s3 = DbCmd.ExecuteScalar().ToString(); //select로 날아온 값을 string으로 받음 
 
             return s3;
@@ -340,7 +397,7 @@ namespace TCPIP_Send
             int id = 0;
 
             //ExcuteScalar로 읽기 
-            DbCmd.CommandText = string.Format("select COUNT(*) from Razig");
+            DbCmd.CommandText = string.Format("select COUNT(*) from Razig_Date");
             string s = DbCmd.ExecuteScalar().ToString();
             Int32.TryParse(s, out id);
 
@@ -351,19 +408,4 @@ namespace TCPIP_Send
 
     }
 
-
-    public struct StopWatch
-    {
-        public int current_action_check;
-
-        public StopWatch(int curr_action_check)
-        {            
-            current_action_check = curr_action_check;
-        }
-
-        public void Reset()
-        {          
-            current_action_check = 1;
-        }       
-    }
 }

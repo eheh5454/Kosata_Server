@@ -39,14 +39,17 @@
             this.DOWN = new System.Windows.Forms.Button();
             this.LEFT = new System.Windows.Forms.Button();
             this.ConnectButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.ErrorBox = new System.Windows.Forms.TextBox();
+            this.STOP = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Box_Temp = new System.Windows.Forms.TextBox();
             this.Box_Hum = new System.Windows.Forms.TextBox();
             this.Web_mjpg_stream = new System.Windows.Forms.WebBrowser();
             this.Chart_TH = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.BOX_razigIP = new System.Windows.Forms.TextBox();
+            this.BOX_razigPORT = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +61,7 @@
             this.UP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UP.ForeColor = System.Drawing.Color.LightPink;
             this.UP.Image = ((System.Drawing.Image)(resources.GetObject("UP.Image")));
-            this.UP.Location = new System.Drawing.Point(552, 206);
+            this.UP.Location = new System.Drawing.Point(565, 281);
             this.UP.Name = "UP";
             this.UP.Size = new System.Drawing.Size(110, 110);
             this.UP.TabIndex = 0;
@@ -72,7 +75,7 @@
             this.RIGHT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.RIGHT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RIGHT.Image = ((System.Drawing.Image)(resources.GetObject("RIGHT.Image")));
-            this.RIGHT.Location = new System.Drawing.Point(668, 313);
+            this.RIGHT.Location = new System.Drawing.Point(681, 388);
             this.RIGHT.Name = "RIGHT";
             this.RIGHT.Size = new System.Drawing.Size(110, 110);
             this.RIGHT.TabIndex = 1;
@@ -86,7 +89,7 @@
             this.DOWN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.DOWN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DOWN.Image = ((System.Drawing.Image)(resources.GetObject("DOWN.Image")));
-            this.DOWN.Location = new System.Drawing.Point(552, 420);
+            this.DOWN.Location = new System.Drawing.Point(565, 495);
             this.DOWN.Name = "DOWN";
             this.DOWN.Size = new System.Drawing.Size(110, 110);
             this.DOWN.TabIndex = 2;
@@ -100,7 +103,7 @@
             this.LEFT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.LEFT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LEFT.Image = ((System.Drawing.Image)(resources.GetObject("LEFT.Image")));
-            this.LEFT.Location = new System.Drawing.Point(436, 313);
+            this.LEFT.Location = new System.Drawing.Point(449, 388);
             this.LEFT.Name = "LEFT";
             this.LEFT.Size = new System.Drawing.Size(110, 110);
             this.LEFT.TabIndex = 3;
@@ -109,70 +112,69 @@
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(538, 571);
+            this.ConnectButton.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ConnectButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ConnectButton.Location = new System.Drawing.Point(650, 21);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(86, 33);
+            this.ConnectButton.Size = new System.Drawing.Size(141, 43);
             this.ConnectButton.TabIndex = 4;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
-            // button2
+            // STOP
             // 
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(654, 571);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 33);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Quit";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // ErrorBox
-            // 
-            this.ErrorBox.Location = new System.Drawing.Point(2, 571);
-            this.ErrorBox.Multiline = true;
-            this.ErrorBox.Name = "ErrorBox";
-            this.ErrorBox.Size = new System.Drawing.Size(340, 44);
-            this.ErrorBox.TabIndex = 6;
+            this.STOP.FlatAppearance.BorderSize = 0;
+            this.STOP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.STOP.Image = ((System.Drawing.Image)(resources.GetObject("STOP.Image")));
+            this.STOP.Location = new System.Drawing.Point(581, 403);
+            this.STOP.Name = "STOP";
+            this.STOP.Size = new System.Drawing.Size(80, 80);
+            this.STOP.TabIndex = 5;
+            this.STOP.UseVisualStyleBackColor = true;
+            this.STOP.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(0, 9);
+            this.label1.Location = new System.Drawing.Point(13, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "온도";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(0, 109);
+            this.label2.Location = new System.Drawing.Point(13, 163);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.Size = new System.Drawing.Size(42, 16);
             this.label2.TabIndex = 8;
             this.label2.Text = "습도";
             // 
             // Box_Temp
             // 
-            this.Box_Temp.Location = new System.Drawing.Point(2, 24);
+            this.Box_Temp.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Box_Temp.Location = new System.Drawing.Point(15, 100);
             this.Box_Temp.Name = "Box_Temp";
-            this.Box_Temp.Size = new System.Drawing.Size(100, 21);
+            this.Box_Temp.Size = new System.Drawing.Size(130, 26);
             this.Box_Temp.TabIndex = 9;
             // 
             // Box_Hum
             // 
-            this.Box_Hum.Location = new System.Drawing.Point(2, 124);
+            this.Box_Hum.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Box_Hum.Location = new System.Drawing.Point(15, 180);
             this.Box_Hum.Name = "Box_Hum";
-            this.Box_Hum.Size = new System.Drawing.Size(100, 21);
+            this.Box_Hum.Size = new System.Drawing.Size(130, 26);
             this.Box_Hum.TabIndex = 10;
             // 
             // Web_mjpg_stream
             // 
-            this.Web_mjpg_stream.Location = new System.Drawing.Point(2, 218);
+            this.Web_mjpg_stream.Location = new System.Drawing.Point(9, 281);
             this.Web_mjpg_stream.MinimumSize = new System.Drawing.Size(20, 20);
             this.Web_mjpg_stream.Name = "Web_mjpg_stream";
             this.Web_mjpg_stream.ScrollBarsEnabled = false;
@@ -185,7 +187,7 @@
             this.Chart_TH.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.Chart_TH.Legends.Add(legend1);
-            this.Chart_TH.Location = new System.Drawing.Point(149, 9);
+            this.Chart_TH.Location = new System.Drawing.Point(200, 84);
             this.Chart_TH.Name = "Chart_TH";
             series1.ChartArea = "ChartArea1";
             series1.LabelBorderWidth = 2;
@@ -203,21 +205,64 @@
             title1.Text = "Temp and Humidity";
             this.Chart_TH.Titles.Add(title1);
             // 
+            // BOX_razigIP
+            // 
+            this.BOX_razigIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BOX_razigIP.Location = new System.Drawing.Point(16, 29);
+            this.BOX_razigIP.Name = "BOX_razigIP";
+            this.BOX_razigIP.Size = new System.Drawing.Size(233, 26);
+            this.BOX_razigIP.TabIndex = 13;
+            // 
+            // BOX_razigPORT
+            // 
+            this.BOX_razigPORT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BOX_razigPORT.Location = new System.Drawing.Point(355, 29);
+            this.BOX_razigPORT.Name = "BOX_razigPORT";
+            this.BOX_razigPORT.Size = new System.Drawing.Size(130, 26);
+            this.BOX_razigPORT.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(13, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Razig_IP";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(352, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Razig_PORT";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(781, 623);
+            this.ClientSize = new System.Drawing.Size(800, 614);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BOX_razigPORT);
+            this.Controls.Add(this.BOX_razigIP);
             this.Controls.Add(this.Chart_TH);
             this.Controls.Add(this.Web_mjpg_stream);
             this.Controls.Add(this.Box_Hum);
             this.Controls.Add(this.Box_Temp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ErrorBox);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.STOP);
             this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.LEFT);
             this.Controls.Add(this.DOWN);
@@ -240,14 +285,17 @@
         private System.Windows.Forms.Button DOWN;
         private System.Windows.Forms.Button LEFT;
         private System.Windows.Forms.Button ConnectButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox ErrorBox;
+        private System.Windows.Forms.Button STOP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Box_Temp;
         private System.Windows.Forms.TextBox Box_Hum;
         private System.Windows.Forms.WebBrowser Web_mjpg_stream;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_TH;
+        private System.Windows.Forms.TextBox BOX_razigIP;
+        private System.Windows.Forms.TextBox BOX_razigPORT;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
