@@ -57,6 +57,8 @@ namespace TCPIP_Send
 
         string stream_address = "http://192.168.0.119:8091/javascript_simple.html";
 
+        bool connect = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -220,7 +222,7 @@ namespace TCPIP_Send
             }
         }
 
-        //connect
+        //라지그 키트와 연결하기
         private void ConnectButton_Click(object sender, EventArgs e)
         {
 #if TCPIP
@@ -250,7 +252,10 @@ namespace TCPIP_Send
             EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT));
             
             //라지그에 내 IP와 PORT정보 전송 
-            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + MyPORT), epUDP);            
+            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + MyPORT), epUDP);
+
+            //연결 상태로 변경 
+            connect = true;
 #endif
         }
 
@@ -302,7 +307,7 @@ namespace TCPIP_Send
                 sw.Flush();
             }
 #else
-            ErrorBox.Text += button;
+            //ErrorBox.Text += button;
             //소켓 생성 
             Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
@@ -318,6 +323,63 @@ namespace TCPIP_Send
         {
             //udp_thread.Abort();
             //Application.ExitThread();
+        }
+
+
+        //사진 캡처하기 
+        private void Button_capture_Click(object sender, EventArgs e)
+        {
+            if (!connect)
+                return;
+            //mjpg에서 스냅샷 저장 
+            String url = "http://" + Razig_IP + ":8091/?action=snapshot";
+            String fileName = "capture.png";
+            if (!DownloadRemoteImageFile(url, fileName))
+            {
+                MessageBox.Show("Download Failed: " + url);
+            }
+
+            //bmp생성해서 Imagebox창 띄우기 
+            Bitmap bmp = new Bitmap("capture.png");
+            ImageBox imgbox = new ImageBox(bmp);
+            imgbox.ShowDialog();
+            imgbox.Close();
+            bmp.Dispose();
+            
+           
+        }
+
+        //이미지 URL 파일로 저장하기 
+        private bool DownloadRemoteImageFile(string uri, string fileName)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            bool bImage = response.ContentType.StartsWith("image",
+                StringComparison.OrdinalIgnoreCase);
+            if ((response.StatusCode == HttpStatusCode.OK ||
+                response.StatusCode == HttpStatusCode.Moved ||
+                response.StatusCode == HttpStatusCode.Redirect) &&
+                bImage)
+            {
+                using (Stream inputStream = response.GetResponseStream())
+                using (Stream outputStream = File.OpenWrite(fileName))
+                {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    do
+                    {
+                        bytesRead = inputStream.Read(buffer, 0, buffer.Length);
+                        outputStream.Write(buffer, 0, bytesRead);
+                    } while (bytesRead != 0);
+                }
+                
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

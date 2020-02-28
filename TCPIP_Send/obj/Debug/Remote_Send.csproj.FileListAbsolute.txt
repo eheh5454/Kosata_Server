@@ -8,3 +8,4 @@ C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\Remote_Send.cspro
 C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\Remote_Send.csproj.CoreCompileInputs.cache
 C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.exe
 C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.pdb
+C:\Users\Dohyun\source\repos\Kosta_Server\TCPIP_Send\obj\Debug\TCPIP_Send.ImageBox.resources

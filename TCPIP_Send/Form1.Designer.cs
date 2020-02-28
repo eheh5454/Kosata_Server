@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.UP = new System.Windows.Forms.Button();
             this.RIGHT = new System.Windows.Forms.Button();
             this.DOWN = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.BOX_razigPORT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Button_capture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,27 +184,27 @@
             // 
             // Chart_TH
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart_TH.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart_TH.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.Chart_TH.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Chart_TH.Legends.Add(legend3);
             this.Chart_TH.Location = new System.Drawing.Point(200, 84);
             this.Chart_TH.Name = "Chart_TH";
-            series1.ChartArea = "ChartArea1";
-            series1.LabelBorderWidth = 2;
-            series1.Legend = "Legend1";
-            series1.Name = "Temp";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Humidity";
-            this.Chart_TH.Series.Add(series1);
-            this.Chart_TH.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.LabelBorderWidth = 2;
+            series5.Legend = "Legend1";
+            series5.Name = "Temp";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Humidity";
+            this.Chart_TH.Series.Add(series5);
+            this.Chart_TH.Series.Add(series6);
             this.Chart_TH.Size = new System.Drawing.Size(591, 191);
             this.Chart_TH.TabIndex = 12;
             this.Chart_TH.Text = "chart1";
-            title1.Name = "Temp";
-            title1.Text = "Temp and Humidity";
-            this.Chart_TH.Titles.Add(title1);
+            title3.Name = "Temp";
+            title3.Text = "Temp and Humidity";
+            this.Chart_TH.Titles.Add(title3);
             // 
             // BOX_razigIP
             // 
@@ -245,6 +246,17 @@
             this.label4.Text = "Razig_PORT";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // Button_capture
+            // 
+            this.Button_capture.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Button_capture.Location = new System.Drawing.Point(9, 251);
+            this.Button_capture.Name = "Button_capture";
+            this.Button_capture.Size = new System.Drawing.Size(75, 23);
+            this.Button_capture.TabIndex = 17;
+            this.Button_capture.Text = "Capture";
+            this.Button_capture.UseVisualStyleBackColor = true;
+            this.Button_capture.Click += new System.EventHandler(this.Button_capture_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -252,6 +264,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(800, 614);
+            this.Controls.Add(this.Button_capture);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BOX_razigPORT);
@@ -296,6 +309,7 @@
         private System.Windows.Forms.TextBox BOX_razigPORT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Button_capture;
     }
 }
 
