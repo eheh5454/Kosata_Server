@@ -49,7 +49,8 @@ namespace TCPIP_Send
 
         //라지그 IP와 PORT주소 
         string Razig_IP = "192.168.0.119";
-        string Razig_PORT = "9001";
+        string Razig_PORT_Move = "9001"; //움직임 제어용 포트 
+        string Razig_PORT_TH = "9002"; //온습도 수신용 포트 
 
         //날짜와 시간, DB에 넣을 용도 
         string date = null;
@@ -78,7 +79,7 @@ namespace TCPIP_Send
 
             //라지그 IP,PORT 초기값 적용 
             BOX_razigIP.Text = Razig_IP;
-            BOX_razigPORT.Text = Razig_PORT;            
+            //BOX_razigPORT.Text = Razig_PORT;            
             
             //로컬 아이피 얻기 
             IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
@@ -243,13 +244,13 @@ namespace TCPIP_Send
 
             //입력한 라지그 IP, PORT정보를 가져옴 
             Razig_IP = BOX_razigIP.Text;
-            Razig_PORT = BOX_razigPORT.Text;
+            //Razig_PORT = BOX_razigPORT.Text;
 
             //소켓 생성 
             Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             //설정한 라지그의 IP,PORT를 EndPoint로 설정 
-            EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT));
+            EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_TH));
             
             //라지그에 내 IP와 PORT정보 전송 
             sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + MyPORT), epUDP);
@@ -312,7 +313,7 @@ namespace TCPIP_Send
             Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             //메시지를 전송할 타겟 EndPoint
-            EndPoint epUDP = new IPEndPoint(IPAddress.Parse("192.168.0.119"), 9001);           
+            EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_Move));           
 
             //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
             sock_local.SendTo(Encoding.Default.GetBytes(button), epUDP);           
