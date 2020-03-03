@@ -49,6 +49,8 @@
             this.BOX_razigIP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Button_capture = new System.Windows.Forms.Button();
+            this.Button_Auto = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,6 +237,26 @@
             this.Button_capture.UseVisualStyleBackColor = true;
             this.Button_capture.Click += new System.EventHandler(this.Button_capture_Click);
             // 
+            // Button_Auto
+            // 
+            this.Button_Auto.Location = new System.Drawing.Point(713, 290);
+            this.Button_Auto.Name = "Button_Auto";
+            this.Button_Auto.Size = new System.Drawing.Size(75, 23);
+            this.Button_Auto.TabIndex = 18;
+            this.Button_Auto.Text = "Auto";
+            this.Button_Auto.UseVisualStyleBackColor = true;
+            this.Button_Auto.Click += new System.EventHandler(this.Button_Auto_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(713, 319);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Passive";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -242,6 +264,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(800, 614);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Button_Auto);
             this.Controls.Add(this.Button_capture);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BOX_razigIP);
@@ -284,6 +308,8 @@
         private System.Windows.Forms.TextBox BOX_razigIP;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Button_capture;
+        private System.Windows.Forms.Button Button_Auto;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -47,7 +47,7 @@ namespace TCPIP_Send
         string MyPORT = "9000";
         string MyIP = null;
 
-        //라지그 IP와 PORT주소 
+        //라지그 IP와 PORT주소 초기값 
         string Razig_IP = "192.168.0.119";
         string Razig_PORT_Move = "9001"; //움직임 제어용 포트 
         string Razig_PORT_TH = "9002"; //온습도 수신용 포트 
@@ -56,6 +56,7 @@ namespace TCPIP_Send
         string date = null;
         string time = null;
 
+        //mjpg 스트리밍 주소 
         string stream_address = "http://192.168.0.119:8091/javascript_simple.html";
 
         bool connect = false;
@@ -239,12 +240,14 @@ namespace TCPIP_Send
                 ErrorBox.Text = string.Format("{0}", se);
             }
 #else
-            //웹 스트리밍 시작                 
-            Web_mjpg_stream.Navigate(stream_address);
-
             //입력한 라지그 IP, PORT정보를 가져옴 
             Razig_IP = BOX_razigIP.Text;
-            //Razig_PORT = BOX_razigPORT.Text;
+
+            //스트리밍 주소 설정 
+            stream_address = "http://" + Razig_IP + ":8091/javascript_simple.html";
+
+            //웹 스트리밍 시작                 
+            Web_mjpg_stream.Navigate(stream_address);                     
 
             //소켓 생성 
             Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -308,22 +311,24 @@ namespace TCPIP_Send
                 sw.Flush();
             }
 #else
-            //ErrorBox.Text += button;
-            //소켓 생성 
-            Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            if(connect)
+            {
+                //소켓 생성 
+                Socket sock_local = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            //메시지를 전송할 타겟 EndPoint
-            EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_Move));           
+                //메시지를 전송할 타겟 EndPoint
+                EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_Move));
 
-            //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
-            sock_local.SendTo(Encoding.Default.GetBytes(button), epUDP);           
+                //지정한 EndPoint로 메시지 전송(문자열->byte형식으로 인코딩)
+                sock_local.SendTo(Encoding.Default.GetBytes(button), epUDP);
+            }                    
 #endif
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             //udp_thread.Abort();
-            //Application.ExitThread();
+            Application.ExitThread();
         }
 
 
@@ -381,6 +386,16 @@ namespace TCPIP_Send
             {
                 return false;
             }
+        }
+
+        private void Button_Auto_Click(object sender, EventArgs e)
+        {
+            SendCmd("auto");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SendCmd("passive");
         }
     }
 
