@@ -51,6 +51,12 @@
             this.Button_capture = new System.Windows.Forms.Button();
             this.Button_Auto = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Box_time = new System.Windows.Forms.TextBox();
+            this.Box_min = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Reserv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,9 +121,9 @@
             // 
             this.ConnectButton.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ConnectButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ConnectButton.Location = new System.Drawing.Point(647, 21);
+            this.ConnectButton.Location = new System.Drawing.Point(274, 29);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(141, 43);
+            this.ConnectButton.Size = new System.Drawing.Size(80, 26);
             this.ConnectButton.TabIndex = 4;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
@@ -211,7 +217,7 @@
             this.BOX_razigIP.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.BOX_razigIP.Location = new System.Drawing.Point(16, 29);
             this.BOX_razigIP.Name = "BOX_razigIP";
-            this.BOX_razigIP.Size = new System.Drawing.Size(592, 26);
+            this.BOX_razigIP.Size = new System.Drawing.Size(250, 26);
             this.BOX_razigIP.TabIndex = 13;
             // 
             // label3
@@ -257,6 +263,74 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Box_time
+            // 
+            this.Box_time.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Box_time.Location = new System.Drawing.Point(516, 29);
+            this.Box_time.Name = "Box_time";
+            this.Box_time.Size = new System.Drawing.Size(48, 26);
+            this.Box_time.TabIndex = 20;
+            this.Box_time.Text = "00";
+            this.Box_time.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Box_min
+            // 
+            this.Box_min.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Box_min.Location = new System.Drawing.Point(596, 29);
+            this.Box_min.Name = "Box_min";
+            this.Box_min.Size = new System.Drawing.Size(48, 26);
+            this.Box_min.TabIndex = 21;
+            this.Box_min.Text = "00";
+            this.Box_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(513, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 16);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "시간예약";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label5.Location = new System.Drawing.Point(565, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 16);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "시";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.Location = new System.Drawing.Point(650, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(25, 16);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "분";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // Reserv
+            // 
+            this.Reserv.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Reserv.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Reserv.Location = new System.Drawing.Point(681, 29);
+            this.Reserv.Name = "Reserv";
+            this.Reserv.Size = new System.Drawing.Size(80, 26);
+            this.Reserv.TabIndex = 25;
+            this.Reserv.Text = "예약";
+            this.Reserv.UseVisualStyleBackColor = true;
+            this.Reserv.Click += new System.EventHandler(this.Reserv_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -264,6 +338,12 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(800, 614);
+            this.Controls.Add(this.Reserv);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Box_min);
+            this.Controls.Add(this.Box_time);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Button_Auto);
             this.Controls.Add(this.Button_capture);
@@ -310,6 +390,12 @@
         private System.Windows.Forms.Button Button_capture;
         private System.Windows.Forms.Button Button_Auto;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Box_time;
+        private System.Windows.Forms.TextBox Box_min;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button Reserv;
     }
 }
 

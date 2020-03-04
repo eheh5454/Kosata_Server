@@ -397,6 +397,20 @@ namespace TCPIP_Send
         {
             SendCmd("passive");
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SendCmd("time1218");
+        }
+
+        //시간 예약하기 
+        private void Reserv_Click(object sender, EventArgs e)
+        {
+            string hour = Box_time.Text;
+            string min = Box_min.Text;
+
+            SendCmd("time" + hour + min);
+        }
     }
 
     public class DatabaseControl
