@@ -61,6 +61,11 @@ namespace TCPIP_Send
 
         bool connect = false;
 
+        //UDP 서버용 변수들 
+        Socket udp_socket;
+
+        IPEndPoint ep;
+
         public Form1()
         {
             InitializeComponent();
@@ -185,13 +190,13 @@ namespace TCPIP_Send
         private void UDP_Server()
         {
             //udp소켓 생성 
-            Socket udp_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            udp_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             //EndPoint 설정(IP와 Port)
-            IPEndPoint ep = new IPEndPoint(IPAddress.Any, 9000);
+            ep = new IPEndPoint(IPAddress.Any, 9000);
 
             //소켓 바인드 
             udp_socket.Bind(ep);
-
+            
             //수신 시작 
             while (true)
             {
@@ -256,7 +261,7 @@ namespace TCPIP_Send
             EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_TH));
             
             //라지그에 내 IP와 PORT정보 전송 
-            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + MyPORT), epUDP);
+            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + ":"+ MyPORT), epUDP);
 
             //연결 상태로 변경 
             connect = true;
@@ -327,8 +332,8 @@ namespace TCPIP_Send
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //udp_thread.Abort();
-            Application.ExitThread();
+            udp_thread.Abort();
+            udp_socket.Close();
         }
 
 
