@@ -363,7 +363,7 @@
             this.Controls.Add(this.UP);
             this.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "A.T Famer 1.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.Chart_TH)).EndInit();
             this.ResumeLayout(false);

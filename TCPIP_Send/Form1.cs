@@ -210,18 +210,19 @@ namespace TCPIP_Send
                 //수신한 길이가 0 이상이면 data를 받는다 
                 if (recv > 0)
                 {
-                    string dataFromClient = Encoding.Default.GetString(buff, 0, recv);                    
+                    string dataFromClient = Encoding.Default.GetString(buff, 0, recv);
+                    
 
                     if(dataFromClient.Substring(0,2) == "TS")
                     {
-                        string temp_s = dataFromClient.Substring(2,5);
-                        string hum_s = dataFromClient.Substring(7, 6);
+                        string temp_s = dataFromClient.Substring(2, 5);
+                        string hum_s = dataFromClient.Substring(7, 5);
                         UpdateDate();
                         mydb._ExcuteSql(string.Format("INSERT INTO Razig_Date (id, Date, Time, Temp, Hum) VALUES ({0},'{1}','{2}',{3},{4})", count_id++, date, time, temp_s, hum_s));
                         UpdateBox(temp_s, Box.Temp);
                         UpdateBox(hum_s, Box.Hum);
-                        UpdateChart(temp_s, hum_s);                      
-                        
+                        UpdateChart(temp_s, hum_s);
+
                     }                    
                     
                 }
@@ -261,7 +262,7 @@ namespace TCPIP_Send
             EndPoint epUDP = new IPEndPoint(IPAddress.Parse(Razig_IP), Int32.Parse(Razig_PORT_TH));
             
             //라지그에 내 IP와 PORT정보 전송 
-            sock_local.SendTo(Encoding.Default.GetBytes("con" + MyIP + ":"+ MyPORT), epUDP);
+            sock_local.SendTo(Encoding.Default.GetBytes(MyIP + ":" + MyPORT), epUDP);
 
             //연결 상태로 변경 
             connect = true;
