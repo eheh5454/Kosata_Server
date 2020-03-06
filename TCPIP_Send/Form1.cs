@@ -417,6 +417,11 @@ namespace TCPIP_Send
 
             SendCmd("time" + hour + min);
         }
+
+        private void Web_mjpg_stream_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
     }
 
     public class DatabaseControl
@@ -433,7 +438,7 @@ namespace TCPIP_Send
             {
                 //테이블 속성에서 연결 문자열을 복사, \->\\로 바꿔줌 
                 DbConn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\MyDB\\TransferDB.mdf;Integrated Security=True;Connect Timeout=30";
-
+                //DbConn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=.\\TransferDB.mdf;Integrated Security=True;Connect Timeout=30";
                 DbConn.Open();
 
                 DbCmd.Connection = DbConn;

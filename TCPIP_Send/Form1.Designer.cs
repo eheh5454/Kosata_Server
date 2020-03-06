@@ -187,6 +187,7 @@
             this.Web_mjpg_stream.ScrollBarsEnabled = false;
             this.Web_mjpg_stream.Size = new System.Drawing.Size(425, 330);
             this.Web_mjpg_stream.TabIndex = 11;
+            this.Web_mjpg_stream.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.Web_mjpg_stream_DocumentCompleted);
             // 
             // Chart_TH
             // 
